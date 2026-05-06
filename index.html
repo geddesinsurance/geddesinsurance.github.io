@@ -786,6 +786,24 @@
   .form-success { text-align: center; padding: 2rem; display: none; }
   .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #5C0000; margin-bottom: 1rem; }
   .form-success p { color: #8A7060; font-size: 1.1rem; }
+
+  .mobile-call-btn {
+    display: none;
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.5rem 1rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-radius: 2px;
+  }
+  @media (max-width: 768px) {
+    .mobile-call-btn { display: block; }
+    .heritage-grid { grid-template-columns: 1fr !important; }
+    .heritage-crest { width: 140px !important; }
+  }
 </style>
 </head>
 <body>
@@ -807,6 +825,7 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="tel:9712474496" class="nav-cta">Call Now</a></li>
     </ul>
+    <a href="tel:9712474496" class="mobile-call-btn">&#128222; Call</a>
   </div>
 </nav>
 
@@ -901,9 +920,9 @@
 <!-- HERITAGE -->
 <section style="background: var(--black); padding: 4rem 2rem;" id="heritage">
   <div class="section-inner">
-    <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; align-items: center;">
+    <div class="heritage-grid" style="display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; align-items: center;">
       <div style="text-align: center;">
-        <img src="Clan_Crest.png" alt="Geddes Clan Crest" style="width: 200px; filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9); opacity: 0.85;">
+        <img src="Clan_Crest.png" alt="Geddes Clan Crest" class="heritage-crest" style="width: 200px; filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9); opacity: 0.85;">
         <p style="font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--gold); margin-top: 1rem; letter-spacing: 0.05em;">Durat &middot; Ditat &middot; Placet</p>
         <p style="font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; color: rgba(253,250,245,0.4); text-transform: uppercase; margin-top: 0.3rem;">It endures &middot; It enriches &middot; It pleases</p>
       </div>
