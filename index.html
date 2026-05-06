@@ -805,10 +805,28 @@
     .mobile-call-btn { display: block; }
     .heritage-grid { grid-template-columns: 1fr !important; }
     .heritage-crest { width: 140px !important; }
-    .nav-inner { padding: 0 1rem; overflow: hidden; }
-    .nav-brand { flex: 1; min-width: 0; }
-    .nav-name { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .nav-shield { height: 34px; }
+    .nav-inner { 
+      padding: 0 0.75rem; 
+      overflow: visible;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    nav { overflow: hidden; }
+    .nav-brand { flex: 1; min-width: 0; overflow: hidden; }
+    .nav-name { 
+      font-size: 0.85rem; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis;
+      max-width: calc(100vw - 140px);
+    }
+    .nav-name span { font-size: 0.6rem; }
+    .nav-shield { height: 30px; }
+    .mobile-call-btn {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
   }
 </style>
 </head>
