@@ -791,18 +791,24 @@
     display: none;
     background: var(--gold);
     color: var(--black);
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.9rem;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     text-decoration: none;
     border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   @media (max-width: 768px) {
     .mobile-call-btn { display: block; }
     .heritage-grid { grid-template-columns: 1fr !important; }
     .heritage-crest { width: 140px !important; }
+    .nav-inner { padding: 0 1rem; overflow: hidden; }
+    .nav-brand { flex: 1; min-width: 0; }
+    .nav-name { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nav-shield { height: 34px; }
   }
 </style>
 </head>
