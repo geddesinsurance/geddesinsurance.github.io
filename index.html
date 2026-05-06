@@ -685,148 +685,29 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .hero-content { grid-template-columns: 1fr; }
+    html, body { overflow-x: hidden !important; max-width: 100% !important; }
+    nav { overflow: hidden !important; }
+    .nav-inner { padding: 0 0.75rem; width: 100%; box-sizing: border-box; }
+    .nav-brand { flex: 1; min-width: 0; overflow: hidden; }
+    .nav-name { font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: calc(100vw - 130px); }
+    .nav-name span { font-size: 0.6rem; }
+    .nav-shield { height: 30px; }
+    .nav-links { display: none; }
+    .mobile-call-btn { display: block !important; padding: 0.4rem 0.75rem; font-size: 0.8rem; flex-shrink: 0; }
+    .hero { overflow: hidden; }
+    .hero-content { grid-template-columns: 1fr; padding: 6rem 1rem 3rem; }
     .hero-shield-side { display: none; }
+    .hero-text h1 { font-size: 2.2rem; }
+    section { padding: 3rem 1rem; overflow: hidden; }
     .promise .section-inner { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .rescore .section-inner { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-text { animation: fadeUp 0.8s ease forwards; }
-  .hero-shield-side { animation: fadeUp 0.8s ease 0.3s both; }
-
-  /* QUOTE FORM */
-  .quote-form-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(26,16,8,0.92);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-  }
-  .quote-form-overlay.active { display: flex; }
-  .quote-form-box {
-    background: #F5EFE0;
-    max-width: 560px;
-    width: 90%;
-    padding: 2.5rem;
-    position: relative;
-    border-top: 4px solid #C8A000;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-  .quote-form-box h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: #5C0000;
-    margin-bottom: 0.3rem;
-  }
-  .quote-subtitle {
-    font-size: 1rem;
-    color: #8A7060;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-  .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
-  .form-group label {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #5C0000;
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-  }
-  .form-group input, .form-group select, .form-group textarea {
-    padding: 0.7rem 1rem;
-    border: 1px solid #D4C4A8;
-    background: #FDFAF5;
-    font-family: 'Crimson Pro', serif;
-    font-size: 1rem;
-    color: #1A1008;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #C8A000; }
-  .form-group textarea { resize: vertical; min-height: 80px; }
-  .form-submit {
-    width: 100%;
-    background: #5C0000;
-    color: #FDFAF5;
-    padding: 1rem;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 0.5rem;
-  }
-  .form-submit:hover { background: #A52020; }
-  .form-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: none; border: none;
-    font-size: 1.5rem; cursor: pointer;
-    color: #8A7060; line-height: 1;
-  }
-  .form-close:hover { color: #5C0000; }
-  .form-success { text-align: center; padding: 2rem; display: none; }
-  .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #5C0000; margin-bottom: 1rem; }
-  .form-success p { color: #8A7060; font-size: 1.1rem; }
-
-  .mobile-call-btn {
-    display: none;
-    background: var(--gold);
-    color: var(--black);
-    padding: 0.4rem 0.9rem;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    border-radius: 2px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  @media (max-width: 768px) {
-    .mobile-call-btn { display: block; }
     .heritage-grid { grid-template-columns: 1fr !important; }
     .heritage-crest { width: 140px !important; }
-    .nav-inner { 
-      padding: 0 0.75rem; 
-      overflow: visible;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    nav { overflow: hidden; }
-    .nav-brand { flex: 1; min-width: 0; overflow: hidden; }
-    .nav-name { 
-      font-size: 0.85rem; 
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis;
-      max-width: calc(100vw - 140px);
-    }
-    .nav-name span { font-size: 0.6rem; }
-    .nav-shield { height: 30px; }
-    .mobile-call-btn {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
+    .form-row { grid-template-columns: 1fr; }
+    .coverage-tabs { flex-wrap: wrap; }
+    .tab-btn { font-size: 0.85rem; padding: 0.6rem 1rem; }
   }
 </style>
 </head>
