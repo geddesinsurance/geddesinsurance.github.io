@@ -703,11 +703,24 @@
   .footer-copy { font-size: 0.85rem; color: rgba(253,250,245,0.5); }
 
   /* ── RESPONSIVE ── */
-  .mobile-call-btn { display: none; }
+  .mobile-call-btn {
+    display: none;
+    background: var(--gold);
+    color: var(--black) !important;
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
 
   @media (max-width: 768px) {
     .about-photo { width: 50% !important; max-width: 160px !important; }
-    .quote-form-box { padding: 1.5rem; width: 95%; max-height: 85vh; }
+    .quote-form-box { padding: 1.5rem; width: 95%; }
     .quote-form-box h2 { font-size: 1.4rem; }
     .quote-subtitle { font-size: 0.9rem; margin-bottom: 1rem; }
     .form-group input, .form-group select, .form-group textarea { font-size: 0.95rem; padding: 0.6rem 0.8rem; }
@@ -720,7 +733,7 @@
     .nav-name span { font-size: 0.6rem; }
     .nav-shield { height: 30px; }
     .nav-links { display: none; }
-    .mobile-call-btn { display: block !important; padding: 0.4rem 0.75rem; font-size: 0.8rem; flex-shrink: 0; }
+    .mobile-call-btn { display: flex !important; align-items: center; gap: 0.4rem; padding: 0.5rem 0.9rem; flex-shrink: 0; }
     .hero { overflow: hidden; }
     .hero-content { grid-template-columns: 1fr; padding: 6rem 1rem 3rem; }
     .hero-shield-side { display: none; }
@@ -750,134 +763,6 @@
     padding: 1rem;
   }
   .quote-form-overlay.active { display: flex; }
-
-  .quote-form-box {
-    background: var(--black);
-    border: 2px solid var(--gold);
-    border-top: 5px solid var(--gold);
-    padding: 2.5rem 2rem 2rem;
-    width: 100%;
-    max-width: 600px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    border-radius: 2px;
-  }
-
-  .quote-form-box h2 {
-    font-family: 'Playfair Display', serif;
-    color: var(--gold);
-    font-size: 1.8rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .quote-subtitle {
-    color: rgba(253,250,245,0.65);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-
-  .form-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: transparent;
-    border: 1px solid rgba(200,160,0,0.4);
-    color: var(--gold);
-    width: 32px; height: 32px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-  }
-
-  .form-close:hover { background: var(--gold); color: var(--black); }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    margin-bottom: 1rem;
-  }
-
-  .form-group label {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(253,250,245,0.7);
-    font-weight: 500;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: rgba(253,250,245,0.07);
-    border: 1px solid rgba(200,160,0,0.3);
-    color: var(--white);
-    padding: 0.7rem 1rem;
-    font-family: 'Crimson Pro', Georgia, serif;
-    font-size: 1rem;
-    border-radius: 1px;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(253,250,245,0.3); }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--gold);
-    background: rgba(200,160,0,0.06);
-  }
-
-  .form-group select { cursor: pointer; }
-  .form-group select option { background: var(--black); color: var(--white); }
-  .form-group textarea { min-height: 90px; resize: vertical; }
-
-  .form-submit {
-    width: 100%;
-    background: var(--gold);
-    color: var(--black);
-    border: none;
-    padding: 1rem;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 0.5rem;
-  }
-
-  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .form-success {
-    display: none;
-    text-align: center;
-    padding: 2rem 0;
-    color: var(--white);
-  }
-
-  .form-success h3 {
-    font-family: 'Playfair Display', serif;
-    color: var(--gold);
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .form-success p { font-size: 1.1rem; line-height: 1.7; color: rgba(253,250,245,0.8); }
 </style>
 </head>
 <body>
@@ -900,7 +785,7 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="tel:9712474496" class="nav-cta">Call Now</a></li>
     </ul>
-    <a href="tel:9712474496" class="mobile-call-btn">&#128222; Call</a>
+    <a href="tel:9712474496" class="mobile-call-btn" aria-label="Call Geddes Insurance Services"><i class="fas fa-phone" aria-hidden="true"></i> Call Now</a>
   </div>
 </nav>
 
