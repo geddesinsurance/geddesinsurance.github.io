@@ -685,6 +685,12 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
+    .about-photo { width: 50% !important; max-width: 160px !important; }
+    .quote-form-box { padding: 1.5rem; width: 95%; }
+    .quote-form-box h2 { font-size: 1.4rem; }
+    .quote-subtitle { font-size: 0.9rem; margin-bottom: 1rem; }
+    .form-group input, .form-group select, .form-group textarea { font-size: 0.95rem; padding: 0.6rem 0.8rem; }
+    .form-submit { padding: 0.8rem; font-size: 0.9rem; }
     html, body { overflow-x: hidden !important; max-width: 100% !important; }
     nav { overflow: hidden !important; }
     .nav-inner { padding: 0 0.75rem; width: 100%; box-sizing: border-box; }
@@ -709,6 +715,20 @@
     .coverage-tabs { flex-wrap: wrap; }
     .tab-btn { font-size: 0.85rem; padding: 0.6rem 1rem; }
   }
+
+  /* QUOTE FORM OVERLAY */
+  .quote-form-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,16,8,0.92);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+  }
+  .quote-form-overlay.active { display: flex; }
 </style>
 </head>
 <body>
