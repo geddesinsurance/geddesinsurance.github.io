@@ -10,7 +10,6 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5Q6KXJH8X"></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6LfZCmAtAAAAB-9AntumaFUees7l4jhqp-m020G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -1414,14 +1413,6 @@ async function handleSubmit(e) {
   var form = e.target;
   var data = new FormData(form);
   try {
-    var token = await new Promise((resolve, reject) => {
-      grecaptcha.ready(async () => {
-        try {
-          resolve(await grecaptcha.execute('6LfZCmAtAAAAB-9AntumaFUees7l4jhqp-m020G', {action: 'submit'}));
-        } catch(e) { reject(e); }
-      });
-    });
-    data.append('g-recaptcha-response', token);
     var response = await fetch(form.action, {
       method: 'POST', body: data,
       headers: { 'Accept': 'application/json' }
