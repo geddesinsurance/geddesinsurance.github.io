@@ -1407,7 +1407,13 @@ async function handleSubmit(e) {
   var form = e.target;
   var data = new FormData(form);
   try {
-    var token = await grecaptcha.execute('6LcM4GwdAAAAAFAbmTG9cINCZHgfS10yLtaKFprS', {action: 'submit'});
+    var token = await new Promise((resolve, reject) => {
+      grecaptcha.ready(async () => {
+        try {
+          resolve(await grecaptcha.execute('6LcM4GwdAAAAAFAbmTG9cINCZHgfS10yLtaKFprS', {action: 'submit'}));
+        } catch(e) { reject(e); }
+      });
+    });
     data.append('g-recaptcha-response', token);
     var response = await fetch(form.action, {
       method: 'POST', body: data,
