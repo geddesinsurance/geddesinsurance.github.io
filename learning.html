@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Center | Geddes Insurance Services</title>
+<meta name="description" content="Insurance education from Geddes Insurance Services. Videos and articles to help you understand your coverage, make smart decisions, and protect what matters most.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --crimson: #8B0000;
+    --crimson-dark: #5C0000;
+    --crimson-light: #A52020;
+    --gold: #D4A800;
+    --gold-light: #E8C840;
+    --forest: #1E3D1A;
+    --forest-light: #3D7A35;
+    --black: #1A1008;
+    --white: #FDFAF5;
+    --cream: #F5EFE0;
+    --warm-gray: #8A7060;
+  }
+
+  /* ── SKIP LINK ── */
+  .skip-link {
+    position: absolute; top: -100px; left: 1rem;
+    background: var(--gold); color: var(--black);
+    padding: 0.5rem 1rem; font-family: 'Rajdhani', sans-serif;
+    font-weight: 600; font-size: 0.9rem; text-decoration: none;
+    z-index: 9999; border-radius: 2px; transition: top 0.2s;
+  }
+  .skip-link:focus { top: 1rem; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── TARTAN STRIPE ── */
+  .tartan-stripe {
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--crimson) 0px, var(--crimson) 20px,
+      var(--forest) 20px, var(--forest) 40px,
+      var(--crimson) 40px, var(--crimson) 60px,
+      #4B0082 60px, #4B0082 70px,
+      var(--crimson) 70px, var(--crimson) 90px
+    );
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000; background: rgba(26, 16, 8, 0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+    display: flex; align-items: center;
+    justify-content: space-between; height: 70px;
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+
+  .nav-shield { height: 44px; width: auto; }
+
+  .nav-name { display: flex; flex-direction: column; }
+  .nav-name-main {
+    font-family: 'Playfair Display', serif; color: var(--white);
+    font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; line-height: 1.1;
+  }
+  .nav-name-sub {
+    font-family: 'Rajdhani', sans-serif; color: var(--gold);
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.9rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold) !important; color: var(--black) !important;
+    padding: 0.5rem 1.2rem; border-radius: 2px;
+    font-weight: 600 !important; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  .mobile-call-btn {
+    display: none;
+    background: var(--gold); color: var(--black) !important;
+    text-decoration: none; font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 2px; white-space: nowrap;
+  }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: var(--crimson-dark);
+    padding: 120px 2rem 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.06;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, var(--gold) 40px, var(--gold) 42px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, var(--gold) 40px, var(--gold) 42px);
+  }
+
+  .page-hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+  .page-hero-label {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; display: block;
+  }
+
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+  }
+
+  .page-hero h1 span { color: var(--gold); }
+
+  .page-hero p {
+    font-size: 1.15rem; color: rgba(253,250,245,0.8);
+    line-height: 1.7; max-width: 560px; margin: 0 auto;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-section {
+    background: var(--cream);
+    border-bottom: 1px solid rgba(139,0,0,0.15);
+    padding: 1.5rem 2rem;
+    position: sticky; top: 70px; z-index: 100;
+  }
+
+  .filter-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--warm-gray); margin-right: 0.5rem;
+  }
+
+  .filter-btn {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+    padding: 0.4rem 1rem; border-radius: 2px; cursor: pointer;
+    border: 1px solid rgba(139,0,0,0.25);
+    background: transparent; color: var(--warm-gray);
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: var(--crimson); color: var(--crimson); }
+  .filter-btn.active {
+    background: var(--crimson); border-color: var(--crimson);
+    color: var(--white);
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  /* ── COMING SOON BANNER ── */
+  .coming-soon-banner {
+    background: var(--forest);
+    border-left: 4px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .coming-soon-banner i { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; }
+
+  .coming-soon-banner p {
+    color: rgba(253,250,245,0.9); font-size: 1rem; line-height: 1.5;
+  }
+
+  .coming-soon-banner strong { color: var(--gold); }
+
+  /* ── SECTION HEADING ── */
+  .section-heading {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.5rem; margin-top: 2rem;
+  }
+
+  .section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--crimson);
+  }
+
+  .section-heading::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(139,0,0,0.2);
+  }
+
+  /* ── VIDEO GRID ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  /* ── VIDEO CARD ── */
+  .video-card {
+    background: var(--white);
+    border: 1px solid rgba(139,0,0,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+  }
+
+  .video-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139,0,0,0.12);
+  }
+
+  .video-card[data-category="coming-soon"] { opacity: 0.7; }
+
+  /* Thumbnail area */
+  .video-thumb {
+    position: relative; padding-top: 56.25%; /* 16:9 */
+    background: var(--black); overflow: hidden; cursor: pointer;
+  }
+
+  .video-thumb iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; border: none;
+  }
+
+  /* Placeholder thumbnail for coming-soon cards */
+  .video-thumb-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--crimson-dark), var(--black));
+    gap: 0.75rem;
+  }
+
+  .video-thumb-placeholder i {
+    font-size: 2.5rem; color: rgba(212,168,0,0.4);
+  }
+
+  .video-thumb-placeholder span {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(253,250,245,0.4);
+  }
+
+  /* Category badge */
+  .video-badge {
+    position: absolute; top: 0.6rem; left: 0.6rem;
+    background: var(--crimson); color: var(--white);
+    font-family: 'Rajdhani', sans-serif; font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.2rem 0.5rem; border-radius: 2px; font-weight: 600;
+    z-index: 1;
+  }
+
+  .video-badge.gold { background: var(--gold); color: var(--black); }
+  .video-badge.forest { background: var(--forest); }
+
+  /* Card body */
+  .video-body {
+    padding: 1.2rem 1.2rem 1rem;
+    flex: 1; display: flex; flex-direction: column;
+  }
+
+  .video-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--black);
+    line-height: 1.3; margin-bottom: 0.5rem;
+  }
+
+  .video-body p {
+    font-size: 0.9rem; color: var(--warm-gray);
+    line-height: 1.6; flex: 1;
+  }
+
+  .video-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 0.9rem; padding-top: 0.8rem;
+    border-top: 1px solid rgba(139,0,0,0.08);
+  }
+
+  .video-duration {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.1em; color: var(--warm-gray);
+  }
+
+  .video-duration i { margin-right: 0.3rem; font-size: 0.7rem; }
+
+  .video-watch-btn {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+    color: var(--crimson); text-decoration: none;
+    display: flex; align-items: center; gap: 0.3rem;
+    transition: color 0.2s;
+  }
+
+  .video-watch-btn:hover { color: var(--gold); }
+  .video-watch-btn i { font-size: 0.65rem; }
+
+  /* ── SUGGEST TOPIC ── */
+  .suggest-section {
+    background: var(--crimson-dark);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .suggest-section::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, var(--gold) 40px, var(--gold) 42px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, var(--gold) 40px, var(--gold) 42px);
+  }
+
+  .suggest-content { position: relative; z-index: 1; max-width: 550px; margin: 0 auto; }
+
+  .suggest-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; color: var(--white); margin-bottom: 0.75rem;
+  }
+
+  .suggest-content p {
+    color: rgba(253,250,245,0.75); font-size: 1rem;
+    line-height: 1.7; margin-bottom: 1.5rem;
+  }
+
+  .suggest-btn {
+    display: inline-block;
+    background: var(--gold); color: var(--black);
+    font-family: 'Rajdhani', sans-serif; font-weight: 700;
+    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.9rem 2rem; text-decoration: none; border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .suggest-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black); padding: 3rem 2rem 2rem;
+    border-top: 3px solid var(--gold);
+  }
+
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem; margin-bottom: 2rem;
+  }
+
+  .footer-brand { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .footer-logo {
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+  }
+
+  .footer-logo img { height: 40px; }
+
+  .footer-logo-name {
+    font-family: 'Playfair Display', serif; color: var(--white);
+    font-size: 0.95rem; font-weight: 700;
+  }
+
+  .footer-motto {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem; color: rgba(253,250,245,0.6); line-height: 1.6;
+  }
+
+  .footer-heading {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .footer-links a {
+    color: rgba(253,250,245,0.65); text-decoration: none;
+    font-size: 0.9rem; transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .footer-contact a {
+    color: rgba(253,250,245,0.65); text-decoration: none;
+    font-size: 0.9rem; transition: color 0.2s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .footer-contact a:hover { color: var(--gold); }
+  .footer-contact a i { color: var(--gold); font-size: 0.85rem; width: 16px; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(253,250,245,0.1);
+    padding-top: 1.5rem; max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-copy { font-size: 0.85rem; color: rgba(253,250,245,0.5); }
+
+  .footer-license {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.08em; color: rgba(253,250,245,0.6); line-height: 1.8;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-call-btn { display: flex !important; align-items: center; gap: 0.4rem; padding: 0.5rem 0.9rem; flex-shrink: 0; }
+    .filter-inner { gap: 0.5rem; }
+    .filter-label { width: 100%; margin-right: 0; }
+    .video-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  /* Hidden class for filtering */
+  .video-card.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="Shield2.png" alt="Geddes Insurance Services" class="nav-shield">
+      <div class="nav-name">
+        <span class="nav-name-main">Geddes Insurance Services</span>
+        <span class="nav-name-sub">At Your Service Since 1999</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#coverage">Coverage</a></li>
+      <li><a href="index.html#about">About Bill</a></li>
+      <li><a href="index.html#carriers">Carriers</a></li>
+      <li><a href="learning.html" class="active">Learning Center</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="tel:9712474496" class="nav-cta">Call Now</a></li>
+    </ul>
+    <a href="tel:9712474496" class="mobile-call-btn" aria-label="Call Geddes Insurance Services">
+      <i class="fas fa-phone" aria-hidden="true"></i> Call Now
+    </a>
+  </div>
+</nav>
+
+<div class="tartan-stripe" style="margin-top:70px;" aria-hidden="true"></div>
+
+<main id="main-content">
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-hero-label">Knowledge is Coverage</span>
+      <h1>The <span>Learning Center</span></h1>
+      <p>Straight talk about insurance — no jargon, no pressure. Videos and guides to help you understand what you have, what you need, and why it matters.</p>
+    </div>
+  </section>
+
+  <div class="tartan-stripe" aria-hidden="true"></div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-section" role="navigation" aria-label="Filter topics">
+    <div class="filter-inner">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-filter="all" onclick="filterCards('all', this)">All Topics</button>
+      <button class="filter-btn" data-filter="personal" onclick="filterCards('personal', this)">Personal Lines</button>
+      <button class="filter-btn" data-filter="commercial" onclick="filterCards('commercial', this)">Commercial</button>
+      <button class="filter-btn" data-filter="bonds" onclick="filterCards('bonds', this)">Bonds</button>
+      <button class="filter-btn" data-filter="life" onclick="filterCards('life', this)">Life &amp; Financial</button>
+      <button class="filter-btn" data-filter="general" onclick="filterCards('general', this)">General</button>
+    </div>
+  </div>
+
+  <!-- CONTENT AREA -->
+  <div style="max-width:1200px; margin:0 auto; padding:3rem 2rem 5rem;">
+
+    <!-- Coming Soon Banner -->
+    <div class="coming-soon-banner">
+      <i class="fas fa-film" aria-hidden="true"></i>
+      <p><strong>Videos coming soon!</strong> Bill is building out this library. Check back regularly — new content added as it's produced. Have a topic you'd like covered? <a href="mailto:bill@geddesinsurance.com" style="color:var(--gold);">Let us know.</a></p>
+    </div>
+
+    <!-- PERSONAL LINES -->
+    <div class="section-heading" id="personal">
+      <h2>Personal Lines</h2>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- PLACEHOLDER CARDS — replace youtube-id with real YouTube video ID when ready -->
+
+      <article class="video-card" data-category="personal">
+        <div class="video-thumb">
+          <!-- To add a real video, replace the placeholder div below with:
+               <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="..." allowfullscreen loading="lazy"></iframe> -->
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">Personal</span>
+        </div>
+        <div class="video-body">
+          <h3>Do I Really Need an Umbrella Policy?</h3>
+          <p>Most people don't realize how exposed they are. Bill explains what umbrella coverage actually does — and who needs it most.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~5 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card" data-category="personal">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">Personal</span>
+        </div>
+        <div class="video-body">
+          <h3>How to Read Your Declarations Page</h3>
+          <p>The dec page is the one-page summary of your policy. Bill walks through what every line means so you're never in the dark.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~4 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card" data-category="personal">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">Personal</span>
+        </div>
+        <div class="video-body">
+          <h3>What Is an Insurance Score — and How to Improve Yours</h3>
+          <p>It's not your credit score, but it affects your rate. Bill explains how insurance scoring works and what you can actually do about it.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~6 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card" data-category="personal">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">Personal</span>
+        </div>
+        <div class="video-body">
+          <h3>Renters Insurance: Why It Costs Less Than You Think</h3>
+          <p>A lot of renters skip it. Bill makes the case — and explains what you're actually risking without it.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~3 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /personal grid -->
+
+    <!-- COMMERCIAL -->
+    <div class="section-heading" id="commercial">
+      <h2>Commercial Lines</h2>
+    </div>
+
+    <div class="video-grid">
+
+      <article class="video-card" data-category="commercial">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge forest">Commercial</span>
+        </div>
+        <div class="video-body">
+          <h3>BOP vs. Commercial Package: What's the Difference?</h3>
+          <p>Business owners often get these confused. Bill explains which one fits your business — and when you've outgrown a BOP.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~5 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card" data-category="commercial">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge forest">Commercial</span>
+        </div>
+        <div class="video-body">
+          <h3>What Is a Certificate of Liability — and Why Does Everyone Want One?</h3>
+          <p>COIs are one of the most requested documents in commercial insurance. Bill explains what they prove, what they don't, and how to get one fast.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~4 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /commercial grid -->
+
+    <!-- BONDS -->
+    <div class="section-heading" id="bonds">
+      <h2>Surety Bonds</h2>
+    </div>
+
+    <div class="video-grid">
+
+      <article class="video-card" data-category="bonds">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge gold">Bonds</span>
+        </div>
+        <div class="video-body">
+          <h3>What Is a Surety Bond — and How Is It Different from Insurance?</h3>
+          <p>Most people lump bonds and insurance together. Bill explains the key difference — and why contractors, notaries, and many businesses need both.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~4 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card" data-category="bonds">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge gold">Bonds</span>
+        </div>
+        <div class="video-body">
+          <h3>Oregon CCB Bond Requirements for Contractors</h3>
+          <p>If you hold an Oregon CCB license, you need a bond. Bill walks through what's required, how much it costs, and how to get it done in minutes.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~3 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /bonds grid -->
+
+    <!-- LIFE & FINANCIAL -->
+    <div class="section-heading" id="life">
+      <h2>Life &amp; Financial</h2>
+    </div>
+
+    <div class="video-grid">
+
+      <article class="video-card" data-category="life">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">Life</span>
+        </div>
+        <div class="video-body">
+          <h3>Term vs. Whole Life: Which One Is Right for You?</h3>
+          <p>The most common life insurance question. Bill cuts through the noise with a plain-English comparison — no sales pitch.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~5 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /life grid -->
+
+    <!-- GENERAL -->
+    <div class="section-heading" id="general">
+      <h2>General</h2>
+    </div>
+
+    <div class="video-grid">
+
+      <article class="video-card" data-category="general">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">General</span>
+        </div>
+        <div class="video-body">
+          <h3>What Happens When You File a Claim?</h3>
+          <p>Step by step, from the first call to the settlement check. Bill demystifies the claims process so you know exactly what to expect.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~5 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card" data-category="general">
+        <div class="video-thumb">
+          <div class="video-thumb-placeholder" aria-hidden="true">
+            <i class="fas fa-play-circle"></i>
+            <span>Coming Soon</span>
+          </div>
+          <span class="video-badge">General</span>
+        </div>
+        <div class="video-body">
+          <h3>Why Use an Independent Agent vs. Going Direct?</h3>
+          <p>Bill explains the difference — and why having someone in your corner matters more than you'd think when a claim hits.</p>
+          <div class="video-meta">
+            <span class="video-duration"><i class="fas fa-clock" aria-hidden="true"></i> ~4 min</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--warm-gray);letter-spacing:0.1em;">COMING SOON</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /general grid -->
+
+  </div><!-- /content area -->
+
+</main>
+
+<!-- SUGGEST A TOPIC -->
+<section class="suggest-section">
+  <div class="suggest-content">
+    <h2>Have a Question?</h2>
+    <p>Is there a topic you'd like Bill to cover? Send a suggestion and it may become the next video — or just call and ask directly.</p>
+    <a href="tel:9712474496" class="suggest-btn">
+      <i class="fas fa-phone" aria-hidden="true"></i> &nbsp;Call Bill: 971-247-4496
+    </a>
+  </div>
+</section>
+
+<div class="tartan-stripe" aria-hidden="true"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <img src="Shield2.png" alt="Geddes Insurance Services">
+        <span class="footer-logo-name">Geddes Insurance Services</span>
+      </a>
+      <div class="footer-motto">Durat · Ditat · Placet</div>
+      <p class="footer-tagline">Independent insurance counsel for Oregon, Washington, California, Idaho &amp; Ohio — since 1999.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html#coverage">Coverage</a></li>
+        <li><a href="index.html#about">About Bill</a></li>
+        <li><a href="index.html#carriers">Carriers</a></li>
+        <li><a href="learning.html">Learning Center</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-contact">
+        <a href="tel:9712474496"><i class="fas fa-phone" aria-hidden="true"></i> 971-247-4496</a>
+        <a href="fax:9712474495"><i class="fas fa-fax" aria-hidden="true"></i> 971-247-4495</a>
+        <a href="mailto:bill@geddesinsurance.com"><i class="fas fa-envelope" aria-hidden="true"></i> bill@geddesinsurance.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-license">
+      <strong style="color:rgba(253,250,245,0.75);">Geddes Insurance Services</strong> &nbsp;·&nbsp;
+      Licensed in OR · WA · CA · ID · OH
+    </div>
+    <p class="footer-copy">&copy; <script>document.write(new Date().getFullYear())</script> Geddes Insurance Services. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  function filterCards(category, btn) {
+    // Update buttons
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Filter cards
+    document.querySelectorAll('.video-card').forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Hide/show section headings based on visible cards
+    document.querySelectorAll('.section-heading').forEach(heading => {
+      const id = heading.id;
+      if (!id) return;
+      const hasVisible = [...document.querySelectorAll(`.video-card[data-category="${id}"]`)]
+        .some(c => !c.classList.contains('hidden'));
+      heading.style.display = (category === 'all' || hasVisible) ? 'flex' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
